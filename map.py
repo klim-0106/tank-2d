@@ -28,7 +28,6 @@ MAP = [
 ]
 
 def build():
-    """Создаёт словарь тайлов и возвращает прямоугольник флага."""
     tiles = {}
     flag_rect = None
 
@@ -44,11 +43,9 @@ def build():
     return tiles, flag_rect
 
 def walls_from(tiles):
-    """Возвращает список прямоугольников всех непроходимых стен."""
     return [data[2] for data in tiles.values() if data[0] in ('B', 'S')]
 
 def draw_tiles(surface, tiles):
-    """Рисует все тайлы на экране."""
     global CHICKEN_IMG
 
     if CHICKEN_IMG is None:
@@ -103,7 +100,6 @@ def draw_tiles(surface, tiles):
             surface.blit(CHICKEN_IMG, r.topleft)
 
 def make_bg():
-    """Создаёт фон из клеток в шахматном порядке."""
     bg = pygame.Surface((W, H))
     c1 = (18, 20, 28)
     c2 = (22, 25, 35)
