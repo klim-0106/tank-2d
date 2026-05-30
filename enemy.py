@@ -11,11 +11,6 @@ H = TILE * 13
 HUD = 44
 
 def draw_tank(surface, rect, color, aim_x, aim_y):
-    """
-    Рисует танк в прямоугольнике rect.
-    color — цвет танка.
-    aim_x, aim_y — куда смотрит дуло (мышь для игрока, игрок для врага).
-    """
     x, y, w, h = rect.x, rect.y, rect.width, rect.height
     cx, cy = rect.centerx, rect.centery
 
@@ -38,7 +33,6 @@ def draw_tank(surface, rect, color, aim_x, aim_y):
     pygame.draw.circle(surface, light, (cx, cy), 3)
 
 class Obj:
-    """Игровой объект — танк (игрок или враг)."""
 
     def __init__(self, x, y, color, speed, hp, shoot_cooldown):
         self.rect = pygame.Rect(x, y, 32, 32)
@@ -51,7 +45,6 @@ class Obj:
         self.dy = 1
 
     def move(self, dx, dy, walls):
-        """Двигает танк, проверяя столкновения со стенами."""
         if dx or dy:
             self.dx, self.dy = dx, dy
 
@@ -81,7 +74,6 @@ ENEMY_CFG = [
 SPAWN_POINTS = [(1, 0), (5, 0), (9, 0), (0, 4), (12, 4), (1, 12), (5, 12), (9, 12)]
 
 def spawn(level, player_rect, walls):
-    """Создаёт врагов для указанного уровня, не попадая на игрока и стены."""
     speed, cooldown, hp = ENEMY_CFG[min(level - 1, 4)]
 
     positions = SPAWN_POINTS[:]
@@ -103,10 +95,6 @@ def spawn(level, player_rect, walls):
     return enemies
 
 def update_enemies(enemies, player, walls, enemy_bullets):
-    """
-    Обновляет всех врагов: движение, стрельба, столкновение с игроком.
-    Возвращает True если игрок убит (таранен врагом).
-    """
     px, py = player.rect.center
 
     for e in enemies:
