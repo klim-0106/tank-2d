@@ -5,7 +5,6 @@ parts = []
 flash = 0
 
 def spark(x, y, color=(200, 160, 80), count=10, speed=4):
-    """Создаёт искры в точке (x, y)."""
     for _ in range(count):
         angle = random.uniform(0, 6.28)
         vel = random.uniform(speed * 0.3, speed)
@@ -19,16 +18,13 @@ def spark(x, y, color=(200, 160, 80), count=10, speed=4):
         ])
 
 def explode(x, y, color=(255, 160, 40)):
-    """Большой взрыв — больше искр."""
     spark(x, y, color, count=18, speed=5)
 
 def do_flash():
-    """Запускает красное мигание экрана (игрок получил урон)."""
     global flash
     flash = 10
 
 def update():
-    """Обновляет все частицы и уменьшает таймер мигания."""
     global flash
 
     for p in parts[:]:
@@ -45,7 +41,6 @@ def update():
         flash -= 1
 
 def draw(surface, W, H, HUD):
-    """Рисует все частицы и красный оверлей при мигании."""
     for p in parts:
         radius = max(1, int(4 * p[5] / 20))
         tmp = pygame.Surface((radius * 2, radius * 2), pygame.SRCALPHA)
