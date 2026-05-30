@@ -27,11 +27,7 @@ YEL = (255, 215, 50)
 RED = (220, 55, 55)
 GLD = (255, 200, 0)
 
-def run_level(lvl):
-    """
-    Запускает один уровень.
-    Возвращает True если игрок захватил флаг, False если погиб.
-    """
+def run_level(lvl):                                                           
 
     tiles, flag_rect = mp.build()
     walls = mp.walls_from(tiles)
@@ -49,11 +45,7 @@ def run_level(lvl):
 
     screen_bounds = pygame.Rect(0, 0, W, H + HUD)
 
-    def move_bullet(bullet):
-        """
-        Двигает пулю и проверяет столкновения со стенами.
-        Возвращает False если пуля вышла за экран или попала в кирпич.
-        """
+    def move_bullet(bullet):                                                   
         bullet[0].x += int(bullet[1])
         bullet[0].y += int(bullet[2])
 
